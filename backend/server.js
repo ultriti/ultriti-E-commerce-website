@@ -1,10 +1,14 @@
 const express = require("express");
 const dbconnect = require("./config/DB_Connect");
 const dotenv = require("dotenv")
+const cookiePasrser = require("cookie-parser");
+
+const user = require("./routes/user.route")
 
 const app = express();
 dotenv.config();
 app.use(express.json());
+app.use(cookiePasrser());
 
 const PORT = process.env.PORT || 3000;
 dbconnect();
@@ -19,6 +23,9 @@ app.post("/data", (req, res) => {
   const body = req.body;
   res.json({ message: "Data received", data: body });
 });
+
+
+app.use("/api/user",user)
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

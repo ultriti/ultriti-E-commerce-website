@@ -7,20 +7,17 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
     lastName: {
-      type: String,
-      required: true,
+      type: String
     },
   },
   profilePicture: {
     Url: {
       type: String,
-      required: true,
       default:
         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     },
     ImageId: {
       type: String,
-      required: true,
       default:
         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     },
@@ -28,6 +25,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     default: "user",
+    required: true,
     enum: ["user", "admin", "vendor", "delivery", "superAdmin"],
   },
   email: {
@@ -41,7 +39,6 @@ const userSchema = new mongoose.Schema({
   },
   phoneNumber: {
     type: String,
-    required: true,
     unique: true,
   },
   credentialVerification: {
